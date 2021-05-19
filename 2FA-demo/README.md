@@ -1,4 +1,4 @@
-## Two-factor Authentication
+# Two-factor Authentication
 
 Two-factor authentication (2FA) protects against unauthorized access to your account by confirming your identity using:
 
@@ -7,9 +7,16 @@ Two-factor authentication (2FA) protects against unauthorized access to your acc
 
 TOTP - Time-based One-time password
 
+## What are we doing in this project?
+
+1. We configure and set up a local JSON database by using the `node-json-db` package.
+2. We created a route to register a new user. We are using `uuid` to generate a random id. We are generating a **temporary secret**. We are storing this temporary secret object against the id generated. temp_secret contains secret in- hex, base32, ascii, otpauth_url (for generating Barcode) encodings.
+3. We grab this base32 value and create a new instance in the google authenticator app. We should select the TOTP method. After this is done, google authenticator will start generating the otps.
+4. We created a "/verify" route - if the otp is correct, we are saving the secret object in the secret variable against the id (previously we saved it as temp_secret).
+
 <hr/>
 
-[So, how does Google Authenticator work?](https://www.youtube.com/watch?v=XYVrnZK5MAU)
+## [So, how does Google Authenticator work?](https://www.youtube.com/watch?v=XYVrnZK5MAU)
 
 HOTP - HMAC (Hash-based Message Authentication) based OTP.
 So, in this approach we have a shared secret (our server has this, and we give it to the google authenticator app), generally in base32 encoding. So, we run SHA1 cryptographic hashing algorithm on this secret and a counter. The secret remains the same, but as counter changes, hash changes.
