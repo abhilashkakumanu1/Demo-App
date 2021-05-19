@@ -2,7 +2,7 @@
 
 GraphQL is just a spec on top of HTTP. It's just like REST, it just says how to format the requests. In REST we have to call API many more times and also we get a bunch of information we don't need.
 
-## What are we doing here?
+## [What are we doing here?](https://youtu.be/_Zss2Mbz4Bs)
 
 In this demo, we will look at what graphql is, how to create schema, input types, queries, and mutation. We also will look at resolvers.
 We are using the `express-graphql` module - this sets up an endpoint "/graphql". **So, graphql is just an endpoint on the server**. On this endpoint we can use this special query language (called graphql). `express-graphql` also provides us with this playground - `graphiql` to play with! We can look up the API docs directly here.
